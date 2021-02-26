@@ -34,19 +34,28 @@ function newItem(){
        li.toggleClass('strike');
  	}
 
- 	li.addEventListener("dblclick",crossOut);
+// 	li.addEventListener("dblclick",crossOut);
+    li.on("dblclick", function crossOut() {
+		li.toggleClass("strike");
+	});
 
     
     
  //3(i). Adding the delete button "X": 
-   let crossOutButton = document.createElement("crossOutButton");
- 	crossOutButton.appendChild(document.createTextNode("X"));
- 	li.appendChild(crossOutButton);
+//   let crossOutButton = document.createElement("crossOutButton");
+   let crossOutButton = $('<crossOutButton></crossOutButton>');
+// 	crossOutButton.appendChild(document.createTextNode("X"));
+    crossOutButton.append(document.createTextNode('X'));
+// 	li.appendChild(crossOutButton);
+    li.append(crossOutButton);
 
- 	crossOutButton.addEventListener("click", deleteListItem);
+// 	crossOutButton.addEventListener("click", deleteListItem);
+    crossOutButton.on('click', deleteListItem);
+    
  //3(ii). Adding CLASS DELETE (DISPLAY: NONE) from the css:
    function deleteListItem(){
- 		li.classList.add("delete")
+// 		li.classList.add("delete")
+        li.addClass('delete');
  	}
  // 4. Reordering the items: 
    $('#list').sortable();
